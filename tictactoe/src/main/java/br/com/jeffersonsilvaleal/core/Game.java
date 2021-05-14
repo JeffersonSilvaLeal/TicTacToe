@@ -1,6 +1,7 @@
 package br.com.jeffersonsilvaleal.core;
 
 import br.com.jeffersonsilvaleal.tictactoe.Constants;
+import br.com.jeffersonsilvaleal.tictactoe.ui.UI;
 
 public class Game {
 	//Cria o objeto tabuleiro
@@ -10,6 +11,7 @@ public class Game {
 	Player[] players = new Player[Constants.SYMBOL_PLAYERS.length];
 	
 	public void play() {
-		System.out.println("Jogando...");
+		UI.printGameTitle();
+		UI.readInput("Nome do jogado: ");
 	}
 }
