@@ -5,6 +5,8 @@ import java.util.Scanner;
 // Classe para escrever no console
 public class UI {
 
+	
+	
 	// Método para escrever Texto
 	public static void printText(String text){
 		System.out.println(text);
@@ -30,7 +32,7 @@ public class UI {
 	
 	// Escreve um texto e pede um dado ao usuário
 	public static Scanner readInput(String text) {
-		printTextWithNoNewLine(text + ": ");
+		printTextWithNoNewLine(text + " ");
 		return Ler(text);
 	}
 
