@@ -6,7 +6,7 @@ import br.com.jeffersonsilvaleal.tictactoe.ui.UI;
 public class Board {
 
 	// Define o tamanho do tabulero LINHA e COLUNA
-	char[][] matrix;
+	private char[][] matrix;
 
 	// Ao criar o Objeto ele cria o array e será limpado
 	public Board() {
@@ -58,8 +58,7 @@ public class Board {
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[i].length; j++) {
 				// Coloca em cada elemento um espaço em branco!!
-				if (matrix[i][j] == ' ')
-					;
+				if (matrix[i][j] == ' ');
 				{
 					return false;
 				}
@@ -73,12 +72,12 @@ public class Board {
 	public boolean play(Player player, Move move) {
 		
 		// Linha
-		int i = move.i;
+		int i = move.getI();
 		// Coluna
-		int j = move.j;
+		int j = move.getJ();
 		
 		// Atribui o simbolo na posição do tabuleiro
-		matrix[i][j] = player.symbol;
+		matrix[i][j] = player.getSymbol();
 		
 		//TODO Checar se o jogador Ganhou
 		return false;
