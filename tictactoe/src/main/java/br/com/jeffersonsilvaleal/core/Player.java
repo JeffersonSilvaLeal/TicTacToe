@@ -1,5 +1,7 @@
 package br.com.jeffersonsilvaleal.core;
 
+import br.com.jeffersonsilvaleal.tictactoe.ui.UI;
+
 public class Player {
 	
 	// Variável para armazenar nome dos jogadores
@@ -11,14 +13,24 @@ public class Player {
 	// Simbolo
 	private char symbol;
 	
-	// Faz um movimento
-	public Move inputMove(){
-		return null;
-	}
 	
+	// Construtor	que recebe parâmetro
+	public Player(String name, Board board, char symbol) {
+		this.name = name;
+		this.board = board;
+		this.symbol = symbol;
+	}
+
+	// Faz um movimento, Método unico da classe por isso está com modificador private
+	private Move inputMove(){
+	String moveString = UI.readInput("Jogador " + name + " =>");
+	return new Move(moveString);
+	}
+		
 	// Faz um jogada
 	public void play(){
-		
+		Move move = inputMove();
+		board.play(this, move);
 	}
 
 	// Métodos para setar(SETTERS) e retornar(GETTERS) valores

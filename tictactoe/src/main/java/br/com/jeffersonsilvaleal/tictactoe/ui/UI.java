@@ -31,16 +31,17 @@ public class UI {
 	}
 	
 	// Escreve um texto e pede um dado ao usuário
-	public static Scanner readInput(String text) {
+	public static String readInput(String text) {
 		printTextWithNoNewLine(text + " ");
 		return Ler(text);
 	}
 
 	// Solicita um dado ao Usuário
-	private static Scanner Ler(String text) {
+	private static String Ler(String text) {
 			Scanner ler = new Scanner(System.in);
-			ler.next();
-			return ler;
+			return ler.next();
+		//	String ler1 = ler.next();
+		//	return ler1;
 		}
 }
 

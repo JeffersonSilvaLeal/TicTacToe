@@ -9,6 +9,19 @@ public class Move {
 	private int j;
 
 	
+	// Construtor que recebe parâmetros
+	public  Move(String moveString) {
+		// "2,5"
+		// ["2" "5"]		
+	
+		String[] tokens = moveString.split(",");//Quebra a String
+		this.i = Integer.parseInt(tokens[0]);// Converte String em int
+		this.j = Integer.parseInt(tokens[1]);
+		
+		// TODO validar se a estrutura do moveString está correta
+		
+	}
+
 	// Métodos para setar(SETTERS) e retornar(GETTERS) valores
 	public int getI() {
 		return i;
