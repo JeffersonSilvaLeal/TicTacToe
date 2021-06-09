@@ -68,7 +68,7 @@ public class Board {
 		return true;
 	}
 
-	// Faz uma jogada indicando o jogado e o movimento
+	// Detecta se o jogador ganhou ou não
 	public boolean play(Player player, Move move) {
 		
 		// Linha
@@ -78,9 +78,154 @@ public class Board {
 		
 		// Atribui o simbolo na posição do tabuleiro
 		matrix[i][j] = player.getSymbol();
+	
+		// Retorna verdadeiro se achar alguma sequência
+		return chechRows(player) || checkCols(player) || checkDiagona1(player) || checkDiagonal2(player);
+	}
+
+	// Checa se há um sequência, retornando True se encontrar sequência e false se não encontrar sequência
+	private boolean chechRows(Player player) {
 		
-		//TODO Checar se o jogador Ganhou
+		/*
+		 * 
+		 * x | x | X
+		 * 
+		 */
+		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
+			if (checkRow(i, player)) {
+				return true;
+			}
+		}
+		
+		/*
+		 * 
+		 * O | x | o
+		 */
+		return false;
+	}
+	
+	// Itera cada Linha[0 ,1 ,2] vericando se o simbolo do player é uma sequência , retorna false se for diferente e true se houver sequência
+	private boolean checkRow(int i, Player player) {
+		char symbol = player.getSymbol();
+		
+		/*
+		 * x | x | o
+		 * 
+		 */
+		// Itera em cada coluna 'J' se encontrar um symbol diferente retorna false pois não acho uma sequência
+		for (int j = 0; j < Constants.BOARD_SIZE; j++) {
+			if (matrix[i][j] != symbol ) {
+				return false;
+			}
+		}
+		
+		/*
+		 * x | x | X
+		 * 
+		 */
+		
+		return true;
+	}
+	
+	// Itera cada coluna[0 ,1 ,2] vericando se o simbolo do player é uma sequência , retorna false se for diferente e true se houver sequência
+	private boolean checkCol(int j, Player player) {
+		char symbol = player.getSymbol();
+	
+		/*
+		 *    | o |
+		 * ----------
+		 *    | o |
+		 * ---------- 
+		 *    | o | 
+		 * 	
+		 */
+		// Itera sobre as linhas 'i' se encontrar um symbol diferente retorna false pois não acho uma sequência
+		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
+			if (matrix[i][j] != symbol) {
+				return false;
+			}
+		}
+		
+		// Se achar um sequ~encia retorna true
+		return true;
+	}
+	
+	
+	// Checa se há um sequência, retornando True se encontrar sequência e false se não encontrar sequência
+	private boolean checkCols(Player player) {
+	
+		/*
+		 *    | o |
+		 * ----------
+		 *    | x |
+		 * ---------- 
+		 *    | o | 
+		 * 	
+		 */
+		for (int j = 0; j < Constants.BOARD_SIZE; j++) {
+			if (checkCol(j, player)) {
+				return true;
+			}
+		}
+		
 		return false;
 	}
 
+	
+	private boolean checkDiagona1(Player player) {
+		char symbol = player.getSymbol();
+		
+		/* i    0    1   2  <= j
+		 * 
+		 * 0    o  |   |
+		 *    -------------  
+ 		 * 1       | o | 
+		 *    -------------
+		 * 2       |   | x
+		 */
+		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
+			if (matrix[i][i] != symbol) {
+				return false;
+			}
+		}
+			
+		/*
+		 * o  |   |
+		 *-------------  
+ 		 *    | o | 
+		 *-------------
+		 *    |   | o
+		 */
+		return true;
+			
+	}
+	
+	
+	private boolean checkDiagonal2(Player player) {
+		char symbol = player.getSymbol();
+		int lastline = Constants.BOARD_SIZE -1;
+		
+		/*
+		 *   |   |  o
+		 *-------------  
+ 		 *   | x | 
+		 *-------------
+		 * o |   | 
+		 */
+		for (int i = lastline, j = 0; i >- 0; i-- , j++) {
+			if (matrix[i][j] != symbol) {
+				return false;
+			}
+		}
+
+		/*
+		 *   |   |  o
+		 *-------------  
+ 		 *   | o | 
+		 *-------------
+		 * o |   | 
+		 */
+		return true;
+		
+	}
 }
