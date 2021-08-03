@@ -10,7 +10,7 @@ public class Game {
 	// Cria e define o número de Jogadores de acordo com o tamanho do array de Players atualmente em 2 players
 	private Player[] players = new Player[Constants.SYMBOL_PLAYERS.length];
 	
-	private int currentPlayerIndex = 0;
+	private int currentPlayerIndex = -1;
 	
 	public void play() {
 		UI.printGameTitle();
@@ -18,6 +18,62 @@ public class Game {
 		for (int i = 0; i < players.length; i++) {
 			players[i] = createPlayer(i);
 		}
+		
+		// Controla o loop do jogo
+		boolean gameEnded = false;
+		// Mostra o próximo jogador
+		Player currentPlayer = nextPlayer();
+		//Placar 
+		Player winner = null;
+		
+		// O jogo fica em loop até quando ouver uma sequência ou dar Velha
+		while(!gameEnded) {
+			// Imprime o tabuleiro!
+			UI.printText("               ");
+			board.print();
+			
+			UI.printText("               ");
+			UI.printText("Jogadas possiveis");
+			UI.printText("               ");
+			UI.printText("0,0|0,1|0,2");
+			UI.printText("-----------");
+			UI.printText("1,0|1,1|1,2");
+			UI.printText("-----------");
+			UI.printText("2,0|2,1|2,2");
+			UI.printText("Faça sua jogada");
+			UI.printText("               ");
+			
+			// Jogador atual faz a sua jogada
+			boolean sequenceFound = currentPlayer.play();
+			
+			// se ouver uma sequência seta o jogador atual como vencedor
+			if (sequenceFound) {
+				gameEnded = true;
+				winner = currentPlayer;
+			
+			// Se der Velha termina o game
+			} else if (board.isFull()) {
+				gameEnded = true;
+			
+			// Se ouver jogadas a fazer alterna o jogador 	
+			} else {
+				currentPlayer = nextPlayer();
+			}
+			
+			
+		}
+		
+		if (winner == null) {
+			UI.printText("Jogo terminou empatado");
+		
+		} else {
+			UI.printText("O jogador '" + winner.getName() + "' venceu o jogo");
+		}
+		
+		UI.printText("               ");
+		board.print();
+		UI.printText("               ");
+		UI.printText("FIM DO GAME!!");
 	}
 
 	// Implementado método de criação de jogador

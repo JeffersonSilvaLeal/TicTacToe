@@ -37,7 +37,7 @@ public class Board {
 
 				// Impede que o type seja escreto na ultima coluna
 				if (j < matrix.length - 1) {
-					UI.printTextWithNoNewLine("       | ");
+					UI.printTextWithNoNewLine(" | ");
 				}
 			}
 
@@ -46,7 +46,7 @@ public class Board {
 
 			// Impede que os pontilhados seja escrito na ultima linha
 			if (i < matrix.length - 1) {
-				UI.printText("--------------------------------");
+				UI.printText("----------");
 			}
 		}
 	}

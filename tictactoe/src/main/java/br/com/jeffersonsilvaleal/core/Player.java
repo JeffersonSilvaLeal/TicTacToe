@@ -28,9 +28,9 @@ public class Player {
 	}
 		
 	// Faz um jogada
-	public void play(){
+	public boolean play(){
 		Move move = inputMove();
-		board.play(this, move);
+		return board.play(this, move);
 	}
 
 	// Métodos para setar(SETTERS) e retornar(GETTERS) valores
