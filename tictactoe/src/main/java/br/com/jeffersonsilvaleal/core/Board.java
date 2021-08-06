@@ -69,12 +69,24 @@ public class Board {
 	}
 
 	// Detecta se o jogador ganhou ou não
-	public boolean play(Player player, Move move) {
+	public boolean play(Player player, Move move) throws invalidMoveException{
 		
 		// Linha
 		int i = move.getI();
 		// Coluna
 		int j = move.getJ();
+		
+		// teste para ver se a jogada é possivel
+		if ( i < 0 || j < 0 || i >= Constants.BOARD_SIZE || j>= Constants.BOARD_SIZE) {
+			throw new invalidMoveException("O intervalo da jodaga é inválida");
+		}
+		
+		if (matrix[i][j] != ' ') {
+			throw new invalidMoveException("Esta jogada já foi realizada!!");
+		}
+		
+		// teste se a jogada está feita
+		
 		
 		// Atribui o simbolo na posição do tabuleiro
 		matrix[i][j] = player.getSymbol();

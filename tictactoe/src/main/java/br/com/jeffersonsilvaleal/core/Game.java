@@ -40,6 +40,7 @@ public class Game {
 			UI.printText("1,0|1,1|1,2");
 			UI.printText("-----------");
 			UI.printText("2,0|2,1|2,2");
+			UI.printText("               ");
 			UI.printText("Faça sua jogada");
 			UI.printText("               ");
 			

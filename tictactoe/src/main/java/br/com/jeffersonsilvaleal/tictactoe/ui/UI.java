@@ -2,11 +2,15 @@ package br.com.jeffersonsilvaleal.tictactoe.ui;
 
 import java.util.Scanner;
 
+import br.com.jeffersonsilvaleal.core.invalidMoveException;
+
 // Classe para escrever no console
 public class UI {
 
 	
 	
+	private static final Scanner Empty = null;
+
 	// Método para escrever Texto
 	public static void printText(String text){
 		System.out.println(text);
