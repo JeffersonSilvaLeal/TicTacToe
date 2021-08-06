@@ -1,6 +1,7 @@
 package br.com.jeffersonsilvaleal.core;
 
 import br.com.jeffersonsilvaleal.tictactoe.Constants;
+import br.com.jeffersonsilvaleal.tictactoe.score.ScoreManager;
 import br.com.jeffersonsilvaleal.tictactoe.ui.UI;
 
 public class Game {
@@ -12,7 +13,14 @@ public class Game {
 	
 	private int currentPlayerIndex = -1;
 	
+	private ScoreManager scoreManager;
+	
+	
+	
 	public void play() {
+		
+		scoreManager = createScoreManager();
+		
 		UI.printGameTitle();
 		
 		for (int i = 0; i < players.length; i++) {
@@ -77,6 +85,9 @@ public class Game {
 		
 		} else {
 			UI.printText("O jogador '" + winner.getName() + "' venceu o jogo");
+			
+			// Adiciona pontuação ao jogador que ganhou
+			scoreManager.saveScore(winner);
 		}
 		
 		UI.printText("               ");
@@ -90,6 +101,14 @@ public class Game {
 		String name = UI.readInput("Player " + (index + 1) + " =>"); 
 		char symbol =  Constants.SYMBOL_PLAYERS[index];
 		Player player = new Player(name, board, symbol);
+		
+		// Consulta se o jogador tem pontuação!!
+		Integer score = scoreManager.getScore(player);
+		
+		// Se o score não for nulo mostra a pontuação do jogador atual
+		if (score != null) {
+			UI.printText("O jogador" + player.getName() + " já possui " + "vitória(s)");
+		}
 	
 		UI.printText("O jogador '" + name + "' vai usar o símbolo '" + symbol + "'");
 		return player;
@@ -109,5 +128,10 @@ public class Game {
 		currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
 		
 		return players[currentPlayerIndex];
+	}
+	
+	private ScoreManager createScoreManager() {
+		//TODO retorna tipo correto
+		return null;
 	}
 }
