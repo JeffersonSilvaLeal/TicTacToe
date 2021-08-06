@@ -22,13 +22,15 @@ public class Player {
 	}
 
 	// Faz um movimento, Método unico da classe por isso está com modificador private
-	private Move inputMove(){
+	// throws lança a exceção para quem chamou
+	private Move inputMove() throws invalidMoveException{
 	String moveString = UI.readInput("Jogador " + name + " =>");
 	return new Move(moveString);
 	}
 		
 	// Faz um jogada
-	public boolean play(){
+	// throws lança a exceção para quem chamou
+	public boolean play() throws invalidMoveException{
 		Move move = inputMove();
 		return board.play(this, move);
 	}

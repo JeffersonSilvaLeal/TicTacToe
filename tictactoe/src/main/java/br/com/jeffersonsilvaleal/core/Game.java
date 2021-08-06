@@ -44,7 +44,15 @@ public class Game {
 			UI.printText("               ");
 			
 			// Jogador atual faz a sua jogada
-			boolean sequenceFound = currentPlayer.play();
+			boolean sequenceFound;
+			
+			try {
+				sequenceFound = currentPlayer.play();
+				
+			} catch(Exception e) {
+				UI.printText("ERRO: " + e.getMessage());
+				continue;// Volta para o teste do loop
+			}
 			
 			// se ouver uma sequência seta o jogador atual como vencedor
 			if (sequenceFound) {

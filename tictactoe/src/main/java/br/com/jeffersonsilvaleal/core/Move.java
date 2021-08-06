@@ -4,22 +4,27 @@ public class Move {
 
 	// Variável para controlar a coluna
 	private int i;
-	
+
 	// Variável para controlar a linha
 	private int j;
 
-	
 	// Construtor que recebe parâmetros
-	public  Move(String moveString) {
+	// throws lança a exceção para quem chamou
+	public Move(String moveString) throws invalidMoveException{
 		// "2,5"
-		// ["2" "5"]		
-	
-		String[] tokens = moveString.split(",");//Quebra a String
-		this.i = Integer.parseInt(tokens[0]);// Converte String em int
-		this.j = Integer.parseInt(tokens[1]);
-		
-		// TODO validar se a estrutura do moveString está correta
-		
+		// ["2" "5"]
+
+		try {
+			String[] tokens = moveString.split(",");// Quebra a String
+			this.i = Integer.parseInt(tokens[0]);// Converte String em int
+			this.j = Integer.parseInt(tokens[1]);
+			
+			// Pega qualquer tipo de exceção
+		} catch (Exception e) {
+			// Lança uma  exceção
+			throw new invalidMoveException("Jogada Inválida");
+		}
+
 	}
 
 	// Métodos para setar(SETTERS) e retornar(GETTERS) valores
@@ -38,6 +43,5 @@ public class Move {
 	public void setJ(int j) {
 		this.j = j;
 	}
-	
-	
+
 }
