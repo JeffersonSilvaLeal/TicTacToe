@@ -56,7 +56,7 @@ public class FileScoreManager implements ScoreManager {
 	// Armazenar mais uma vitória no jogador passado por parametro
 	@Override
 	public void saveScore(Player player) throws IOException {
-		// Pontuação
+		//  Pontuação
 		Integer score = getScore(player);
 
 		if (score == null) {
