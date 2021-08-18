@@ -1,6 +1,9 @@
 package br.com.jeffersonsilvaleal.core;
 
+import java.io.IOException;
+
 import br.com.jeffersonsilvaleal.tictactoe.Constants;
+import br.com.jeffersonsilvaleal.tictactoe.score.FileScoreManager;
 import br.com.jeffersonsilvaleal.tictactoe.score.ScoreManager;
 import br.com.jeffersonsilvaleal.tictactoe.ui.UI;
 
@@ -17,7 +20,7 @@ public class Game {
 	
 	
 	
-	public void play() {
+	public void play() throws IOException{
 		
 		scoreManager = createScoreManager();
 		
@@ -107,7 +110,7 @@ public class Game {
 		
 		// Se o score não for nulo mostra a pontuação do jogador atual
 		if (score != null) {
-			UI.printText("O jogador" + player.getName() + " já possui " + "vitória(s)");
+			UI.printText("O jogador " + player.getName() + " já possui " + score + " vitória(s)");
 		}
 	
 		UI.printText("O jogador '" + name + "' vai usar o símbolo '" + symbol + "'");
@@ -130,8 +133,7 @@ public class Game {
 		return players[currentPlayerIndex];
 	}
 	
-	private ScoreManager createScoreManager() {
-		//TODO retorna tipo correto
-		return null;
+	private ScoreManager createScoreManager() throws IOException{
+		return new FileScoreManager();
 	}
 }
