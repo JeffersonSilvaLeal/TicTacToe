@@ -34,11 +34,11 @@ Quando ouver um vencedor o game irá informar e armazenar a vitória ao respecti
 ## Back end
 Pré-requisitos: Java 15
 
-## 'Bash'
 ```bash
 # https://github.com/JeffersonSilvaLeal/TicTacToe.git
 
 # Autor
+
 Jefferson da Silva leal
 
 https://www.linkedin.com/in/jefferson-da-silva-leal/
