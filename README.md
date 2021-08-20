@@ -34,7 +34,7 @@ Quando ouver um vencedor o game irá informar e armazenar a vitória ao respecti
 ## Back end
 Pré-requisitos: Java 8
 
-# Autor
+## Autor
 
 Jefferson da Silva leal
 
