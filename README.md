@@ -32,7 +32,7 @@ Quando ouver um vencedor o game irá informar e armazenar a vitória ao respecti
 </br>
 
 ## Back end
-Pré-requisitos: Java 15
+Pré-requisitos: Java 8
 
 ```bash
 # https://github.com/JeffersonSilvaLeal/TicTacToe.git
