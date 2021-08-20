@@ -1,12 +1,8 @@
 # TicTacToe
-
-
 # Sobre o projeto
 Implementamos o famosos JOGO-Da-VELHA em java, jogo este bom para exercitar conceitos básicos da linguagem.
 
-
 # Tecnologias utilizadas
-
 ## Back end
 - Java 15
 
@@ -35,17 +31,14 @@ Quando ouver um vencedor o game irá informar e armazenar a vitória ao respecti
 ![fimDeJogo](https://user-images.githubusercontent.com/74872760/130299520-34552e36-1454-4dba-972b-10a98cf7b55b.png)
 </br>
 
-
-
-
 ## Back end
 Pré-requisitos: Java 15
 
+## 'Bash'
 ```bash
 # https://github.com/JeffersonSilvaLeal/TicTacToe.git
 
 # Autor
-
 Jefferson da Silva leal
 
 https://www.linkedin.com/in/jefferson-da-silva-leal/
